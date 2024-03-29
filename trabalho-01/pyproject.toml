@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "trabalho-01"
+version = "0.0.1"
+description = "Trabalho Prático Individual #1"
+authors = ["Caio Oliveira <cfoviana@alu.ufc.br>"]
+packages = [{include = "trabalho_01"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.1"
+scikit-learn = "^1.4.1.post1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
