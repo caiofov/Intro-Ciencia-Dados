@@ -2,12 +2,11 @@
 ## Parte 1: Classificação com o Iris Dataset
 
 # mypy: disable-error-code="import-untyped"
-import numpy
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
-
+from trabalho_01.utils import print_result
 # %%
 # Carregar o dataset
 iris = datasets.load_iris()
@@ -27,17 +26,7 @@ svc = SVC()
 svc.fit(X_train, y_train)
 
 # resultado
-svc_score = svc.score(X_test, y_test)
-print('Score: ', svc_score)
-
-svc_result: numpy.ndarray = svc.predict(X) == y
-
-svc_unique, svc_count = numpy.unique(svc_result, return_counts=True)
-svc_count_true = dict(zip(svc_unique, svc_count))[True]
-print(f'Predict: {svc_count_true} / {len(svc_result)} ' )
-
-
-
+print_result(svc.score(X_test, y_test), svc.predict(X) == y)
 
 # %%
 # KNeighborsClassifier
@@ -47,12 +36,5 @@ knc = KNeighborsClassifier()
 knc.fit(X_train, y_train)
 
 # resultado
-knc_score = knc.score(X_test, y_test)
-print('Score: ', knc_score)
-
-knc_result: numpy.ndarray = knc.predict(X) == y
-
-knc_unique, knc_count = numpy.unique(knc_result, return_counts=True)
-knc_count_true = dict(zip(knc_unique, knc_count))[True]
-print(f'Predict: {knc_count_true} / {len(knc_result)} ' )
+print_result(knc.score(X_test, y_test), knc.predict(X) == y)
 # %%
